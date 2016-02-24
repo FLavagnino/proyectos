@@ -53,21 +53,20 @@ public class DiaUno {
 		empresa1.comprarPaquete(paquetes1);
 		System.out.println("Saldo empresa despegando: " + empresa1.getSaldo() + " \n");
 		/* Ejercicio 2: Punto 3 Prueba 2 */
-		public void mostrarPaquetes(ArrayList<Paquete> unosPaquetes) {
-			for(Paquete unPaquete : unosPaquetes) {
-				System.out.println(unPaquete);
-		}
+//		public void mostrarPaquetes(ArrayList<Paquete> unosPaquetes) {
+//			for(Paquete unPaquete : unosPaquetes) {
+//				System.out.println(unPaquete);
+//		}
 		
 		individuo1.setSaldo(2000.0);
 		System.out.println("Saldo de Juan: " + individuo1.getSaldo());
 		individuo1.reservarPaquete(paqueteMardel);
 		System.out.println("Saldo de Juan luego de reservar paqueteMardel: " + individuo1.getSaldo());
 		System.out.println("Paquetes reservados por Juan:");
-		mostrarPaquetes(individuo1.getPaquetesReservados());
+//		mostrarPaquetes(individuo1.getPaquetesReservados());
 		
 		/* Ejercicio 2: Punto 3 Prueba 3 */
 		individuo1.comprarPaqueteReservado(paqueteMardel);
 		System.out.println("Saldo de Juan luego comprar reservar paqueteMardel: " + individuo1.getSaldo());
-		}
 	}
 }
