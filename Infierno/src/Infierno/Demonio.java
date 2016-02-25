@@ -15,7 +15,7 @@ public abstract class Demonio {
 		this.nivelDeMaldad = nivelDeMaldad;
 	}
 	
-	public boolean puedeCazarAlma(Alma unAlma) {
+	public boolean almaEsCazable(Alma unAlma) {
 		return ( nivelDeMaldad > unAlma.getNivelDeBondad() && this.condicionPuedeCazarAlma(unAlma));
 	}
 	
@@ -25,7 +25,7 @@ public abstract class Demonio {
 	public abstract boolean condicionPuedeCazarAlma(Alma unAlma);
 	
 	public void atacarAlma(Alma unAlma) {
-		if(puedeCazarAlma(unAlma)) {
+		if(almaEsCazable(unAlma)) {
 			cazarAlma(unAlma);
 		} else {
 			atormentarAlma(unAlma);
@@ -34,7 +34,7 @@ public abstract class Demonio {
 	
 	protected void cazarAlma(Alma unAlma) {
 		almasCazadas.add(unAlma);
-		unAlma.olvidarLugarQueHabita();
+		unAlma.mudateA();
 		nivelDeMaldad += 2;
 	}
 	
@@ -44,7 +44,19 @@ public abstract class Demonio {
 		nivelDeMaldad += 1;
 	}
 	
-	public void realizarMision(Mision unaMision) {
-		
+	public void cazarEn(Lugar unLugar) {
+		for(Alma unAlma : unLugar.getAlmasHabitantes()) {
+			atacarAlma(unAlma);
+		}
 	}
+	
+//	public void realizarMision(Mision unaMision) {
+//		
+//	}
+	
+	/* Metodo para testeo */
+	public int cantidadDeAlmasJodidas() {
+		return almasJodidas.size();
+	}
+	
 }
