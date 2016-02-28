@@ -9,11 +9,12 @@ public class DiaUno {
 		PaqueteTipoPrecioXHabitacion tipoPrecioXHabitacion1 = new PaqueteTipoPrecioXHabitacion(2.0, 50.0);
 		PaqueteTipoPrecioFijo tipoPrecioFijo1 = new PaqueteTipoPrecioFijo(500.0);
 		PaqueteTipoPrecioFijo tipoPrecioFijo2 = new PaqueteTipoPrecioFijo(100.0);
-		PaqueteTipoPrecioFijo tipoPrecioFijo3 = new PaqueteTipoPrecioFijo(200.0);
+		PaqueteTipoPrecioFijo tipoPrecioFijo3 = new PaqueteTipoPrecioFijo(3000.0);
 		PaqueteTipoPrecioXBaseSaldo tipoPrecioXBaseSaldo1 = new PaqueteTipoPrecioXBaseSaldo();
 		Paquete paquete1 = new Paquete(tipoPrecioFijo1, 0.25);
 		Paquete paquete2 = new Paquete(tipoPrecioFijo2, 0.1);
 		Paquete paquete3 = new Paquete(tipoPrecioXBaseSaldo1, 0.3);
+		Paquete paquete4 = new Paquete(tipoPrecioFijo3, 0.1);
 		Paquete paqueteMardel = new Paquete(tipoPrecioXHabitacion1, 0.2);
 		ArrayList<Paquete> paquetes1 = new ArrayList<Paquete>();
 		/* Ejercicio 1: Prueba 1 */
@@ -44,7 +45,7 @@ public class DiaUno {
 		System.out.println("Gasto total de Juan: " + individuo1.getGastoTotal());
 		System.out.println("Cantidad de paquetes comprados por Juan: " + individuo1.cantidadPaquetesComprados() + " \n");
 		/* Ejercicio 2: Punto 2 */
-		System.out.println("Paquete comprado mas caro" + individuo1.getPaqueteCompradoMasCaro() + " \n");
+		System.out.println("Paquete comprado mas caro: " + individuo1.getPaqueteCompradoMasCaro() + " \n");
 		/* Ejercicio 2: Punto 3 Prueba 1 */
 		paquetes1.add(paquete2);
 		paquetes1.add(paquete3);
@@ -67,6 +68,14 @@ public class DiaUno {
 		
 		/* Ejercicio 2: Punto 3 Prueba 3 */
 		individuo1.comprarPaqueteReservado(paqueteMardel);
-		System.out.println("Saldo de Juan luego comprar reservar paqueteMardel: " + individuo1.getSaldo());
+		System.out.println("Saldo de Juan luego comprar reserva paqueteMardel: " + individuo1.getSaldo() + "\n");
+		
+		/* Ejercicio 3: Punto 1 y Punto 3 */
+		individuo1.setSaldo(2000.0);
+		individuo1.comprarPaquete(paquete4);
+		System.out.println("\n");
+		
+		/* Ejercicio 3: Punto 2 */
+		individuo1.comprarPaquete(paquetes1);
 	}
 }

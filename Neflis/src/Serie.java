@@ -1,42 +1,65 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Serie extends Contenido{
+public class Serie extends Contenido {
 	private List<Temporada> temporadas = new ArrayList<Temporada>();
-	
-	public Serie(String nombre) {
+
+	public Serie(String nombre, String genero) {
 		this.nombre = nombre;
+		this.genero = genero;
 	}
 	
-	public List<Capitulo> capitulosQueTiene() {
-		List<Capitulo> capitulos = new ArrayList<Capitulo>();
+	public void agregarTemporada(Temporada unaTemporada) {
+		temporadas.add(unaTemporada);
+		unaTemporada.setGenero(this.genero);
+	}
+	
+	public List<Contenido> getCapitulos() {
+		List<Contenido> capitulos = new ArrayList<Contenido>();
 		for(Temporada unaTemporada : temporadas) {
 			capitulos.addAll(unaTemporada.getCapitulos());
 		}
 		return capitulos;
 	}
 	
-	public List<Temporada> getTemporadas() {
-		return temporadas;
-	}
-	
-	public void agregarTemporada(Temporada unaTemporada) {
-		temporadas.add(unaTemporada);
-	}
-	
 	public Double getDuracion() {
 		Double duracionTotal = 0.0;
-		for(Capitulo capitulo : this.capitulosQueTiene()) {
+		for(Contenido capitulo : this.getCapitulos()) {
 			duracionTotal += capitulo.getDuracion();
 		}
 		return duracionTotal;
 	}
-
-	public int cantidadDeTemporadas() {
-		return temporadas.size();
+	
+	public Contenido getUltimoCapitulo() {
+		return getCapitulos().get(getCapitulos().size()-1);
 	}
 	
-	public Temporada ultimaTemporada() {
-		return temporadas.get(cantidadDeTemporadas() - 1);
+	public boolean perteneceASerieElCapitulo(Capitulo unCapitulo) {
+		for(Temporada temporada : temporadas) {
+			if(temporada.perteneceATemporadaElCapitulo(unCapitulo)) {
+				return true;
+			}
+		}
+		return false;
 	}
+	
+//	public String nombreDelTipo() {
+//		return nombreDelTipo;
+//	}
+//	
+//	public List<Temporada> getTemporadas() {
+//		return temporadas;
+//	}
+//	
+//	
+//	
+	
+//
+//	public int cantidadDeTemporadas() {
+//		return temporadas.size();
+//	}
+//	
+//	public Temporada ultimaTemporada() {
+//		return temporadas.get(cantidadDeTemporadas() - 1);
+//	}
 }

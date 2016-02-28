@@ -1,6 +1,7 @@
 package DiaUno;
 
 import java.util.ArrayList;
+import javax.naming.InsufficientResourcesException;
 
 public abstract class Cliente {
 	private String nombre;
@@ -8,7 +9,6 @@ public abstract class Cliente {
 	private ArrayList<Paquete> paquetesComprados = new ArrayList<Paquete>();
 	private Double gastoTotal = 0.0;
 	private Paquete paqueteCompradoMasCaro;
-	
 	public Cliente(String unNombre, Double unSaldo) {
 		nombre = unNombre;
 		saldo = unSaldo;
@@ -36,9 +36,22 @@ public abstract class Cliente {
 		}
 	}
 	
-	public void pagar(Double unMonto){
-		gastoTotal += unMonto;
+	public void restarSaldo(Double unMonto) throws InsufficientResourcesException {
+		if(saldo < unMonto) {
+			throw new InsufficientResourcesException("Saldo insuficiente");
+		}
 		saldo -= unMonto;
+	}
+	
+	public void pagar(Double unMonto) {
+		try {
+			restarSaldo(unMonto);
+			gastoTotal += unMonto;
+		} catch (InsufficientResourcesException e) {
+			System.err.println("InsufficientResourcesException: " + e.getMessage());
+		} finally {
+			System.out.println("El saldo disponible es: " + this.saldo);
+		}
 	}
 	
 	public void agregarPaqueteComprado(Paquete unPaquete) {
@@ -46,9 +59,9 @@ public abstract class Cliente {
 	}
 	
 	public void comprarPaquete(Paquete unPaquete) {
-		agregarPaqueteComprado(unPaquete);
 		pagar(unPaquete.precio(saldo));
-		setPaqueteCompradoMasCaro(unPaquete);
+		agregarPaqueteComprado(unPaquete);
+		setPaqueteCompradoMasCaro(unPaquete);	
 	}
 	
 	public int cantidadPaquetesComprados() {
@@ -72,4 +85,5 @@ public abstract class Cliente {
 	public Paquete getPaqueteCompradoMasCaro() {
 		return paqueteCompradoMasCaro;
 	}
+
 }
