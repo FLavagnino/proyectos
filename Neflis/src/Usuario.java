@@ -16,8 +16,10 @@ public class Usuario {
 	public boolean vio(Contenido unContenido) {
 		if(unContenido.getClass() == Pelicula.class) {
 			return vistos.contains(unContenido);
-		} else {
+		} else { if(unContenido.getClass() == Serie.class) {
 			return vistos.containsAll(unContenido.getCapitulos());
+			}
+		return false;
 		}
 	}
 	
@@ -60,18 +62,27 @@ public class Usuario {
 		return true;
 	}
 	
-	public Set<Contenido> seriesNoVistasCompletamente() {
-		Set<Contenido> capitulos = new HashSet<Contenido>();
-//		Set<Contenido> seriesNoVistasCompletamente = new HashSet<Contenido>();
+	public Set<Serie> seriesVistas() {
+		Set<Serie> seriesVistas = new HashSet<Serie>();
 		for(Contenido contenido : vistos) {
 			if(contenido.getClass() == Capitulo.class) {
-				if(vio(contenido.perteneceASerieElCapitulo())) {
-					capitulos.add(contenido);
+				if(vistos.containsAll(contenido.getSerie().getCapitulos())) {
+					seriesVistas.add(contenido.getSerie());
 				}
 			}
 		}
-		return capitulos;
+		return seriesVistas;
 	}
 	
-	
+	public Set<Serie> seriesNoVistasCompletamente() {
+		Set<Serie> seriesNoVistasCompletamente = new HashSet<Serie>();
+		for(Contenido contenido : vistos) {
+			if(contenido.getClass() == Capitulo.class) {
+				if(!seriesVistas().contains(contenido.getSerie())) {
+					seriesNoVistasCompletamente.add(contenido.getSerie());
+				}
+			}
+		}
+		return seriesNoVistasCompletamente;
+	}
 }

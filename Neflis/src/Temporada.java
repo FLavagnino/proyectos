@@ -4,6 +4,7 @@ import java.util.List;
 public class Temporada {
 	private String nombre;
 	private String genero;
+	private Serie perteneceASerie;
 	private List<Capitulo> capitulos = new ArrayList<Capitulo>();
 	
 	public Temporada(String nombre) {
@@ -13,6 +14,7 @@ public class Temporada {
 	public void agragarCapitulo(Capitulo unCapitulo) {
 		capitulos.add(unCapitulo);
 		unCapitulo.setGenero(this.genero);
+		unCapitulo.setTemporada(this);
 	}
 	
 	public List<Capitulo> getCapitulos() {
@@ -23,24 +25,15 @@ public class Temporada {
 		this.genero = genero;
 	}
 	
+	public void setSerie(Serie serie) {
+		this.perteneceASerie = serie;
+	}
+	
 	public boolean perteneceATemporadaElCapitulo(Capitulo unCapitulo) {
 		return capitulos.contains(unCapitulo);
 	}
-//	public String getNombre() {
-//		return nombre;
-//	}
-	
-	
-	
-//	public List<Capitulo> getCapitulos() {
-//		return capitulos;
-//	}
-//	
-//	public int cantidadDeCapitulos() {
-//		return capitulos.size();
-//	}
-//	
-//	public Capitulo ultimoCapitulo() {
-//		return capitulos.get(cantidadDeCapitulos() - 1);
-//	}
+
+	public Serie getSerie() {
+		return perteneceASerie;
+	}
 }

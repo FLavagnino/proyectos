@@ -12,6 +12,7 @@ public class Serie extends Contenido {
 	public void agregarTemporada(Temporada unaTemporada) {
 		temporadas.add(unaTemporada);
 		unaTemporada.setGenero(this.genero);
+		unaTemporada.setSerie(this);
 	}
 	
 	public List<Contenido> getCapitulos() {
@@ -43,23 +44,4 @@ public class Serie extends Contenido {
 		return false;
 	}
 	
-//	public String nombreDelTipo() {
-//		return nombreDelTipo;
-//	}
-//	
-//	public List<Temporada> getTemporadas() {
-//		return temporadas;
-//	}
-//	
-//	
-//	
-	
-//
-//	public int cantidadDeTemporadas() {
-//		return temporadas.size();
-//	}
-//	
-//	public Temporada ultimaTemporada() {
-//		return temporadas.get(cantidadDeTemporadas() - 1);
-//	}
 }

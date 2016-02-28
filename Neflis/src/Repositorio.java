@@ -17,10 +17,10 @@ public class Repositorio {
 		destacados.add(contenido);
 	}
 	
-	public Set<Contenido> recomendarContenidoA(Usuario usuario) {
-		Set<Contenido> contenidosRecomendados = new HashSet<Contenido>();
-		contenidosRecomendados.addAll(destacados);
-		contenidosRecomendados.addAll(usuario.seriesNoVistasCompletamente());
-		return contenidosRecomendados;
-	}
+//	public Set<Contenido> recomendarContenidoA(Usuario usuario) {
+//		Set<Contenido> contenidosRecomendados = new HashSet<Contenido>();
+//		contenidosRecomendados.addAll(destacados);
+//		contenidosRecomendados.addAll(usuario.seriesNoVistasCompletamente());
+//		return contenidosRecomendados;
+//	}
 }
