@@ -1,4 +1,4 @@
-package DiaUno;
+package clientesYPaquetes;
 
 import java.util.ArrayList;
 import javax.naming.InsufficientResourcesException;

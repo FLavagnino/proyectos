@@ -1,4 +1,4 @@
-package DiaUno;
+package clientesYPaquetes;
 
 public class PaqueteTipoPrecioXHabitacion implements TipoDePaquete {
 	private Double cantidadHabitaciones;

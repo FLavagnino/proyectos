@@ -1,4 +1,4 @@
-package DiaUno;
+package clientesYPaquetes;
 
 public class Paquete {
 	private Double impuesto;
