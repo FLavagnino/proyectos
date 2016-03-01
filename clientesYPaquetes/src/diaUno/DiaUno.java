@@ -1,5 +1,7 @@
 package diaUno;
 
+import org.slf4j.LoggerFactory;
+
 import clientesYPaquetes.Individuo;
 import clientesYPaquetes.Paquete;
 import clientesYPaquetes.PaqueteTipoPrecioFijo;
@@ -7,6 +9,7 @@ import clientesYPaquetes.PaqueteTipoPrecioXBaseSaldo;
 import clientesYPaquetes.PaqueteTipoPrecioXHabitacion;
 
 public class DiaUno {
+	public final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(DiaUno.class);
 	public static void main (String[] args) {
 		Individuo individuo1 = new Individuo("Juan", 2000.0);
 		PaqueteTipoPrecioXHabitacion tipoPrecioXHabitacion1 = new PaqueteTipoPrecioXHabitacion(2.0, 50.0);
@@ -19,22 +22,19 @@ public class DiaUno {
 		Paquete paquete3 = new Paquete(tipoPrecioXBaseSaldo1, 0.3);
 		Paquete paqueteMardel = new Paquete(tipoPrecioXHabitacion1, 0.2);
 		/* Ejercicio 1: Prueba 1 */
-		System.out.println("Saldo de Juan antes de comprar paquete: " + individuo1.getSaldo());
+		LOGGER.info("Saldo de Juan antes de comprar paquete: " + individuo1.getSaldo());
 		individuo1.comprarPaquete(paquete1);
-		System.out.println("Prueba 2.1; Saldo de Juan: " + individuo1.getSaldo());
 		individuo1.setSaldo(2000.0);
-		System.out.println("Saldo de Juan antes de comprar paquete: " + individuo1.getSaldo());
+		LOGGER.info("Saldo de Juan antes de comprar paquete: " + individuo1.getSaldo());
 		individuo1.comprarPaquete(paquete2);
-		System.out.println("Prueba 2.1; Saldo de Juan: " + individuo1.getSaldo() + "\n");
 		/* Ejercicio 1: Prueba 2 con 2 habitaciones de $50 */
-		System.out.println("Prueba 2.2; Precio del paquete mardel: " + paqueteMardel.precio());
+		LOGGER.info("Prueba 2.2; Precio del paquete mardel: " + paqueteMardel.precio());
 		/* Ejercicio 1: Prueba 2 con precio base fijo $200 */
 		paqueteMardel.setTipo(tipoPrecioFijo3);
-		System.out.println("Prueba 2.2; Precio del paquete mardel: " + paqueteMardel.precio() + "\n");
+		LOGGER.info("Prueba 2.2; Precio del paquete mardel: " + paqueteMardel.precio());
 		/* Ejercicio 1: Prueba 3 */
 		individuo1.setSaldo(2000.0);
-		System.out.println("Saldo de Juan antes de comprar paquete: " + individuo1.getSaldo());
+		LOGGER.info("Saldo de Juan antes de comprar paquete: " + individuo1.getSaldo());
 		individuo1.comprarPaquete(paquete3);
-		System.out.println("Prueba 2.3; Saldo de Juan: " + individuo1.getSaldo() + "\n");
 	}
 }

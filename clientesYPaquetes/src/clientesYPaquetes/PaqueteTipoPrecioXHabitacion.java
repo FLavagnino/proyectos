@@ -1,6 +1,8 @@
 package clientesYPaquetes;
+import org.slf4j.LoggerFactory;
 
 public class PaqueteTipoPrecioXHabitacion implements TipoDePaquete {
+	public final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(PaqueteTipoPrecioXHabitacion.class);
 	private Double cantidadHabitaciones;
 	private Double precioHabitacion;
 	

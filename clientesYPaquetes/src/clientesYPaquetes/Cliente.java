@@ -3,7 +3,10 @@ package clientesYPaquetes;
 import java.util.ArrayList;
 import javax.naming.InsufficientResourcesException;
 
+import org.slf4j.LoggerFactory;
+
 public abstract class Cliente {
+	public final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Cliente.class);
 	private String nombre;
 	private Double saldo;
 	private ArrayList<Paquete> paquetesComprados = new ArrayList<Paquete>();
@@ -48,9 +51,10 @@ public abstract class Cliente {
 			restarSaldo(unMonto);
 			gastoTotal += unMonto;
 		} catch (InsufficientResourcesException e) {
-			System.err.println("InsufficientResourcesException: " + e.getMessage());
+			LOGGER.error("Usuario intenta comprar con saldo insuficiente", e);
 		} finally {
-			System.out.println("El saldo disponible es: " + this.saldo);
+//			System.out.println("El saldo disponible es: " + this.saldo);
+			LOGGER.info("El saldo disponible es: " + this.saldo);
 		}
 	}
 	

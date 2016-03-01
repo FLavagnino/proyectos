@@ -1,6 +1,7 @@
 package diaDos;
 
 import java.util.ArrayList;
+import org.slf4j.LoggerFactory;
 
 import clientesYPaquetes.Empresa;
 import clientesYPaquetes.Individuo;
@@ -10,6 +11,7 @@ import clientesYPaquetes.PaqueteTipoPrecioXBaseSaldo;
 import clientesYPaquetes.PaqueteTipoPrecioXHabitacion;
 
 public class DiaDos {
+	public final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(DiaDos.class);
 	public static void main (String[] args) {
 		Individuo individuo1 = new Individuo("Juan", 2000.0);
 		Empresa empresa1 = new Empresa("Despegando", 40000.0);
@@ -27,32 +29,30 @@ public class DiaDos {
 		System.out.println("Punto 1");
 		individuo1.comprarPaquete(paquete1);
 		individuo1.comprarPaquete(paqueteMardel);
-		System.out.println("Gasto total de Juan: " + individuo1.getGastoTotal());
-		System.out.println("Cantidad de paquetes comprados por Juan: " + individuo1.cantidadPaquetesComprados() + " \n");
+		LOGGER.info("Gasto total de Juan: " + individuo1.getGastoTotal());
+		LOGGER.info("Cantidad de paquetes comprados por Juan: " + individuo1.cantidadPaquetesComprados());
 		/* Ejercicio 2: Punto 2 */
 		System.out.println("Punto 2");
-		System.out.println("Paquete comprado mas caro: " + individuo1.getPaqueteCompradoMasCaro() + " \n");
+		LOGGER.info("Paquete comprado mas caro: " + individuo1.getPaqueteCompradoMasCaro());
 		/* Ejercicio 2: Punto 3 Prueba 1 */
 		System.out.println("Punto 3 Prueba 1");
 		paquetes1.add(paquete2);
 		paquetes1.add(paquete3);
 		paquetes1.add(paqueteMardel);
-		System.out.println("Saldo empresa despegando: " + empresa1.getSaldo());
+		LOGGER.info("Saldo empresa despegando: " + empresa1.getSaldo());
 		empresa1.comprarPaquete(paquetes1);
-		System.out.println("Saldo empresa despegando: " + empresa1.getSaldo() + " \n");
 		/* Ejercicio 2: Punto 3 Prueba 2 */
 		System.out.println("Punto 3 Prueba 2");
 		individuo1.setSaldo(2000.0);
-		System.out.println("Saldo de Juan: " + individuo1.getSaldo());
+		LOGGER.info("Saldo de Juan: " + individuo1.getSaldo());
 		individuo1.reservarPaquete(paqueteMardel);
-		System.out.println("Saldo de Juan luego de reservar paqueteMardel: " + individuo1.getSaldo());
-		System.out.println("Cantidad de paquetes reservados por Juan: " + individuo1.getPaquetesReservados().size() + "\n");
+		LOGGER.info("Saldo de Juan luego de reservar paqueteMardel: " + individuo1.getSaldo());
+		LOGGER.info("Cantidad de paquetes reservados por Juan: " + individuo1.getPaquetesReservados().size());
 		/* Ejercicio 2: Punto 3 Prueba 3 */
 		System.out.println("Punto 3 Prueba 3");
-		System.out.println("Saldo de Juan antes de comprar reserva: " + individuo1.getSaldo());
+		LOGGER.info("Saldo de Juan antes de comprar reserva: " + individuo1.getSaldo());
 		individuo1.comprarPaqueteReservado(paqueteMardel);
-		System.out.println("Saldo de Juan luego de comprar reserva: " + individuo1.getSaldo());
-		System.out.println("Cantidad de paquetes reservados: " + individuo1.getPaquetesReservados().size() + "\n");
+		LOGGER.info("Cantidad de paquetes reservados: " + individuo1.getPaquetesReservados().size());
 		
 	}
 }

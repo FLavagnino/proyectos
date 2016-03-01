@@ -1,6 +1,8 @@
 package clientesYPaquetes;
+import org.slf4j.LoggerFactory;
 
 public class Paquete {
+	public final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Paquete.class);
 	private Double impuesto;
 	private TipoDePaquete tipo;
 	

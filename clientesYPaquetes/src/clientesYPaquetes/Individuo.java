@@ -1,9 +1,12 @@
 package clientesYPaquetes;
 
 import java.util.ArrayList;
+
+import org.slf4j.LoggerFactory;
 import java.lang.IllegalArgumentException;
 
 public class Individuo extends Cliente{
+	public final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Individuo.class);
 	private ArrayList<Paquete> paquetesReservados = new ArrayList<Paquete>();
 	
 	public Individuo(String unNombre, Double unSaldo) {

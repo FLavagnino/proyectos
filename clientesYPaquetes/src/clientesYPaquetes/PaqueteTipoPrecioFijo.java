@@ -1,6 +1,9 @@
 package clientesYPaquetes;
 
+import org.slf4j.LoggerFactory;
+
 public class PaqueteTipoPrecioFijo implements TipoDePaquete {
+	public final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(PaqueteTipoPrecioFijo.class);
 	private Double precioBase;
 	
 	public PaqueteTipoPrecioFijo(Double precioBase) {
